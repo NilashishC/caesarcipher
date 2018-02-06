@@ -14,7 +14,7 @@ from os import remove
 from time import gmtime, strftime
 
 
-def encrypt(file_name, encrypted_file_name, key, deletefile=False):
+def encrypt(file_name, encrypted_file_name, key, deletesource=False):
     try:
         with open(file_name, 'r') as input_file:
             text = input_file.read()
@@ -48,7 +48,7 @@ def encrypt(file_name, encrypted_file_name, key, deletefile=False):
                 print (encrypted_text)
                 output_file.write(encrypted_text)
 
-                if (deletefile):
+                if (deletesource):
                     remove(file_name)
 
         except IOError as e:
@@ -57,7 +57,7 @@ def encrypt(file_name, encrypted_file_name, key, deletefile=False):
         print ('[{}]-----PROGRAM RUN COMPLETE-----'.format(gettime()))
 
 
-def decrypt(encrypted_file, decrpted_file, key, deletefile=False):
+def decrypt(encrypted_file, decrpted_file, key, deletesource=False):
     try:
         with open(encrypted_file, 'r') as input_file:
             text = input_file.read()
@@ -89,7 +89,7 @@ def decrypt(encrypted_file, decrpted_file, key, deletefile=False):
                 print (encrypted_text)
                 output_file.write(encrypted_text)
 
-                if (deletefile):
+                if (deletesource):
                     remove(encrypted_file)
 
         except IOError as e:
